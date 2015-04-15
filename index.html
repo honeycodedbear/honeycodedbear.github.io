@@ -1,255 +1,186 @@
 <html>
-	<head>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<div class="col-md-2">
-			<div class="menu">
+  <head>
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css'>
+    <style>
+      *{ margin:0; padding:0; }
+      html, body {
+        width:  100%;
+        height: 100%;
+        margin: 0px;
+        font-family: 'Share Tech Mono' ;
+      }
+      #canvas{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: -1;
+        display:block;
+      }
+      .title{
+        text-align:center;
+        font-size:72px;
+        margin-bottom:-20;
+      }
+      .subtitle{
+        text-align:center;
+        font-size:36px;
+        margin-top:0;
+      }
+      .contacttitle{
+        text-align:center;
+        font-size:14px;
+        margin-top:0;
+        margin-bottom:10;
+      }
+      .navbox{
+        position:absolute;
+        top: 3em;
+        left: 4em;
+        list-style-type: none;
+      }
 
-				<div class="title"><h3> Max Rogers</h3></div>
-				<p> Programmer, Mobile Developer, Club Leader, Ruby Zombie</p>
+      .content{
+        margin-left: 20em;
+        margin-top:1em;
+      }
+      .kingcontent{
+        margin-top:4em;
+      }
+      li a{
+        color:black;
+      }
+      li a:visited{
+        color:black;
+      }
+      li a:hover{
+        color:cyan;
+      }
+      .topicbox{
+        color: white;
+        background-color: black;
+        padding: 1em;
+        margin-bottom: 1em;
+      }
+      ul{
+        list-style-type: none;
+      }
+      .bottomcontent{
+        margin-bottom:4em;
+      }
 
-				<div class="menu_buttons">
-					<div id="large_menu" class="btn-group btn-group-justified">
-					  <div class="btn-group">
-					    <button type="button" class="btn btn-default">Resume</button>
-					  </div>
-					  <div class="btn-group">
-					    <button type="button" class="btn btn-default">Tutorials</button>
-					  </div>
-					  <div class="btn-group">
-					    <button type="button" class="btn btn-danger">Projects</button>
-					  </div>
-					</div>
-
-					<div id="small_menu" class="btn-group-vertical" tyle="margin-bottom: 2em;">
-							<a class="btn btn-danger" href="#" role="button">Projects</a>
-							<a class="btn btn-default" href="#" role="button">Resume</a>
-							<a class="btn btn-default" href="#" role="button">Tutorials</a>
-					</div>
-				</div>
+      @media only screen and (max-device-width: 415px) {
+        .navbox {
+          display: none;
+        }
+      }
 
 
-				<div class="share-buttons">
-					<div class="col-xs-1">
-					</div>
-					<div class="col-xs-10">
-						<a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"><img src="images/flat_web_icon_set/color/Facebook.png"></a>
-						<a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=&source=" target="_blank" title="Share on LinkedIn"><img src="images/flat_web_icon_set/color/LinkedIn.png"></a>
-						<a href="mailto:?subject=&body=: " target="_blank" title="Email"><img src="images/flat_web_icon_set/color/Email.png"></a>
-					</div>
-					<div class="col-xs-1">
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="content col-md-10">
-			<div id="werewolves" class="project">
-				<div class="page-header">
-				  <h1 class="title">Werewolves Mobile <small>Built Summer 2014</small></h1>
-				</div>
-				<p> This is my implementation of the party game werewolves/mafia. Its developed for the android and ios platforms using Apache Cordova with a Ruby-Sinatra backend on a Digital Ocean Server. I wanted to build this game for 3 purposes. 1) I love the game Mafia and was disappointed to not find a solid application on google play store that was cross platform capable. It difficult playing mobile games with your friends when they are divided between iOS and Android. 2) I had recently taught myself Sinatra and wanted to give myself a project so I could build a real API. 3) I had vision for a new genre of games dubbed 'TabletTop Gaming', essentially it would bring the joy of tabletop games like apples to apples, poker, munchkin and D&D to the 21 century. There have been mobile ports of these games but few have really captured the eseences of these games. Its the human element thats most exciting. Since everyone has a phone in their pocket now adays and almost every house hold has a tablet laying around the vision came to me. The tablet could be the gameboard while a person's phone is their hand. So I wanted to build a framework so you could easy introduce ur friends new games while we waited for dinner to arrive or just hanging out. At McHacks in Montreal this last winter I attempted to bring this vision to life using Bluetooth but I ran into a few issues with the Android Bluetooth API. I could connect with a most 7 other devices(a small number for my vision) and second you could only truly communicate with one pairing at a time. This made broadcast messaging impossible. In retrospect, I could have developed some sort of timed stacked package deliver system where the devices connect and reconnect every few seconds. Still I feel like that isn't a very stable system to build a prototype on. So rather than try and reinvent the wheel I've decided to forsake native applications for now and try to use a system that has already solved this issue --- Web Technology.
-				</p>
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas" ></canvas>
+    <ul class="navbox">
+      <h1 class="title"> MAX </h1>
+      <h1 class="subtitle"> ROGERS </h1>
+      <!-- <h1 class="contacttitle"> <a href="">max@maxrogers.me</a> </h1> -->
+      <li> <a href=""> EDUCATION </a> </li>
+      <li> <a href=""> EXPERIENCE </a> </li>
+      <li> <a href=""> PROJECTS </a> </li>
+      <li> <a href=""> SKILLS </a> </li>
+      <li> <a href=""> MISC </a> </li>
+      <li> <a href=""> CONTACTS </a> </li>
+    </ul>
+    <div class="">
+    <div class="content kingcontent">
+      <div class="topicbox"> EDUCATION </div>
+      <ul>
+        <li> BACHELOR'S OF SCIENCE - COMPUTER SCIENCE </li>
+        <li> STONY BROOK UNIVERSITY - DECEMBER 2014 </li>
+        <li> FOUNDER OF STONY BROOK MOBILE APP DEVELOPERS</li>
+        <li> EBOARD MEMBER OF STONY BROOK COMPUTING SOCIETY </li>
+        <li> ORGANIZER OF STONY BROOK COMPUTING SOCIETY'S GEEK GAMES </li>
+      </ul>
+    </div>
+    <div class="content ">
+      <div class="topicbox"> EXPERIENCE </div>
+      <ul>
+        <li> IOS DEVELOPER - NICKELEDEON </li>
+        <li> ORGANIZER AND LEAD WEB DEVELOPER - UNHACKATHON INC </li>
+        <li> MOBILE DEVELOPER- STONY BROOK CHILDREN'S HOSPITAL </li>
+        <li> TECHNICAL INTERN - SPORT 195 </li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="topicbox"> PROJECTS </div>
+      <ul>
+        <li> GIFY TERMINAL - RUBY</li>
+        <li> GITTEN - RUBY/SINATRA</li>
+        <li> TUESDAY - RUBY DEVOPS</li>
+        <li> HUNTR - IOS/RUBY</li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="topicbox"> SKILLS </div>
+      <ul>
+        <li> LANGUAGES - RUBY, JAVA, OBJ-C, SWIFT, PYTHON, JAVASCRIPT</li>
+        <li> TECHNOLOGIES - HTTP, RAILS, SINATRA, IOS, ANDROID</li>
+        <li> CONCEPTS - OOP, REST, MVC, AGILE</li>
+        <li> PERSONAL - LEADERSHIP, PROBLEM SOLVING, OUT REACH, MENTORSHIP, PUBLIC SPEAKING </li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="topicbox"> MISC </div>
+      <ul>
+        <li> ADMIN of  HH Ruby and HH Hacker Problems on FACEBOOK</li>
+        <li> SUBGROUP LEADER of  Hackathon Hackers on FACEBOOK</li>
+        <li> COACH at MAJOR LEAGUE HACKING</li>
+      </ul>
+    </div>
+    <div class="content bottomcontent">
+      <div class="topicbox"> CONTACTS </div>
+      <ul>
+        <li> EMAIL: MAX@MAXROGERS.ME</li>
+        <li> PHONE: 917 776 3154</li>
+        <li> LINKEDIN: LINK</li>
+        <li> FACEBOOK: LINK</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    /* important! for alignment, you should make things
+    * relative to the canvas' current width/height.
+    */
+    function redrawMatrix(context){
+      for(i=0;i<5;i++){
+        for(j=0;j<5;j++){
+          context.fillStyle="rgba(0,0,0,"+Math.floor((Math.random() * 100) + 1)/150+")";
+          context.fillRect(100+(i*100),300+(j*100),100,100);
+        }
+      }
+    }
 
-				<h3> What I learned from this Project</h3>
-				<p>
-					This was my first attempt to build a cordova application with a backend. I had debated about how I wanted to do backend ultimately I went with Sinatra over Rails. While I had a solid years worth of experience using Rails, I recognized that it overly complicated what I wanted to do for the backend. I had built toy backends using rails (see my Android2RailsGCM) and wasn't the easiest experience so I decided to give Sinatra a try. It was the second most popular ruby framework and I had heard it was bare minimial. Which indeed it was, data migrations using Data-Mapper were difficult at first but eventually I figured it out. With Rails, there was a specific way to do things since Rails had been born in a vaccuum but with Sinatra it was really just pure ruby and incredibly mallible.
-				</p>
-				<p>
-					On the cordova client side of things, I had to come up with my own form of authenication because to get omniauth to work I would have use AJAX anyway so I went with a API key solution. One major issue I ran into was that JSONP isn't compatible with POSTs or any other HTTP request than GET. In my investigation it became clear that was because JSONP in order to work around the domain restrictions it embedded itself in a GET request. This behavior is kind of similiar to how Rails gets around some browsers not supporting PUT and DELETE. So I was forced to use JSON and remove ORIGIN restrictions on my Sinatra server. In the future, I might have to come up with a better authentication solution to protect against future attacks.
-				</p>
-				<div class="btn-group btn-group-justified">
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default">Github</button>
-				  </div>
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default" disabled="disabled">AppStore</button>
-				  </div>
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default" disabled="disabled">GooglePlay</button>
-				  </div>
-				</div>
-				<div class="col-xs-6">
-					<h3> Languages Used: </h3>
-					<ul class="list-group">
-					  <li class="list-group-item">HTML5/CSS3</li>
-					  <li class="list-group-item">Javascript</li>
-					  <li class="list-group-item">Ruby</li>
-					</ul>
-				</div>
-				<div class="col-xs-6">
-					<h3> Technologies Used: </h3>
-					<ul class="list-group">
-					  <li class="list-group-item">JQuery</li>
-					  <li class="list-group-item">Sinatra</li>
-					  <li class="list-group-item">Cordova</li>
-					  <li class="list-group-item">Android SDK / iOS SDK</li>
-					  <li class="list-group-item">RESTful HTTP</li>
-					  <li class="list-group-item">SQLite</li>
-					  <li class="list-group-item">Unicorn</li>
-					  <li class="list-group-item">ngnix</li>
-					  <li class="list-group-item">Git</li>
-					</ul>
-				</div>
-				<h3> Screen Shots </h3>
-				<div class="item active">
-					<img src="/images/download.svg" alt="...">
-					<div class="carousel-caption">
-					    <h3>...</h3>
-					    <p>...</p>
-					</div>
-				</div>
-			</div>
-
-			<div id="SwiftEggs" class="project">
-				<div class="page-header">
-				  <h1 class="title">Swift Eggs<small>Built Summer 2014</small></h1>
-				</div>
-				<p> ...
-				</p>
-
-				<h3> What I learned from this Project</h3>
-				<p>
-					.....
-				</p>
-				<div class="btn-group btn-group-justified">
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default">Github</button>
-				  </div>
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default" disabled="disabled">AppStore</button>
-				  </div>
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default" disabled="disabled">GooglePlay</button>
-				  </div>
-				</div>
-				<div class="col-xs-6">
-					<h3> Languages Used: </h3>
-					<ul class="list-group">
-					  <li class="list-group-item">Swift</li>
-					  <li class="list-group-item">Ruby</li>
-					</ul>
-				</div>
-				<div class="col-xs-6">
-					<h3> Technologies Used: </h3>
-					<ul class="list-group">
-					  <li class="list-group-item">Sinatra</li>
-					  <li class="list-group-item">RESTful HTTP</li>
-					  <li class="list-group-item">SQLite</li>
-					  <li class="list-group-item">Unicorn</li>
-					  <li class="list-group-item">ngnix</li>
-					  <li class="list-group-item">Git</li>
-					</ul>
-				</div>
-				<h3> Screen Shots </h3>
-				<div class="item active">
-					<img src="/images/download.svg" alt="...">
-					<div class="carousel-caption">
-					    <h3>...</h3>
-					    <p>...</p>
-					</div>
-				</div>
-			</div>
-
-			<div id="colonoscopy" class="project">
-				<div class="page-header">
-				  <h1 class="title">Colonoscopy Prep App <small>Built Spring 2014</small></h1>
-				</div>
-				<p> ...
-				</p>
-
-				<h3> What I learned from this Project</h3>
-				<p>
-					....
-				</p>
-				<div class="btn-group btn-group-justified">
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default">Github</button>
-				  </div>
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default" disabled="disabled">AppStore</button>
-				  </div>
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default" disabled="disabled">GooglePlay</button>
-				  </div>
-				</div>
-				<div class="col-xs-6">
-					<h3> Languages Used: </h3>
-					<ul class="list-group">
-					  <li class="list-group-item">HTML5/CSS3</li>
-					  <li class="list-group-item">Javascript</li>
-					</ul>
-				</div>
-				<div class="col-xs-6">
-					<h3> Technologies Used: </h3>
-					<ul class="list-group">
-					  <li class="list-group-item">JQuery</li>
-					  <li class="list-group-item">Sinatra</li>
-					  <li class="list-group-item">Cordova</li>
-					  <li class="list-group-item">Android SDK / iOS SDK</li>
-					  <li class="list-group-item">Git</li>
-					</ul>
-				</div>
-				<h3> Screen Shots </h3>
-				<div class="item active">
-					<img src="/images/download.svg" alt="...">
-					<div class="carousel-caption">
-					    <h3>...</h3>
-					    <p>...</p>
-					</div>
-				</div>
-			</div>
-			<div id="android2railsgcm" class="project">
-				<div class="page-header">
-				  <h1 class="title">Android2RailsGCM <small>Built Winter 2014</small></h1>
-				</div>
-				<p> ....
-				</p>
-
-				<h3> What I learned from this Project</h3>
-				<p>
-					....
-				</p>
-				<div class="btn-group btn-group-justified">
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default">Github</button>
-				  </div>
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default" disabled="disabled">AppStore</button>
-				  </div>
-				  <div class="btn-group">
-				    <button type="button" class="btn btn-default" disabled="disabled">GooglePlay</button>
-				  </div>
-				</div>
-				<div class="col-xs-6">
-					<h3> Languages Used: </h3>
-					<ul class="list-group">
-					  <li class="list-group-item">Java</li>
-					  <li class="list-group-item">Ruby</li>
-					</ul>
-				</div>
-				<div class="col-xs-6">
-					<h3> Technologies Used: </h3>
-					<ul class="list-group">
-					  <li class="list-group-item">Rails</li>
-					  <li class="list-group-item">Android SDK</li>
-					  <li class="list-group-item">RESTful HTTP</li>
-					  <li class="list-group-item">PostgreSQL</li>
-					  <li class="list-group-item">Heroku</li>
-					  <li class="list-group-item">Git</li>
-					</ul>
-				</div>
-				<h3> Screen Shots </h3>
-				<div class="item active">
-					<img src="/images/download.svg" alt="...">
-					<div class="carousel-caption">
-					    <h3>...</h3>
-					    <p>...</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
-</html
+    function drawRects(rects,canvas, context){
+      context.clearRect ( 0 , 0 , canvas.width, canvas.height );
+      context.fillStyle="black";
+      for(i in rects){
+        rects[i]["x"] += 10;
+        if(rects[i]["x"] > canvas.width){
+          rects[i]["x"] = 0;
+        }
+        context.fillRect(rects[i]["x"],rects[i]["y"],10,10);
+        console.log(rects[i]);
+      }
+      redrawMatrix(context);
+    }
+    var x = 1;
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var rects = [{"x":10,"y":10},{"x":10,"y":20},{"x":10,"y":30},{"x":30,"y":10},{"x":30,"y":20},{"x":30,"y":30}];
+    //setInterval(function(){drawRects(rects,canvas,context)}, 50);
+    //redrawMatrix(context);
+  </script>
+</html>
