@@ -1,0 +1,63 @@
+body{
+	color: rgb(51, 51, 50);
+}
+
+.menu{
+	text-align: center;
+	border-right: 1px solid #dededc;
+	padding: 1em;
+	padding-top: 4em;
+}
+
+.circle_mask{
+	-webkit-border-radius: 1000px;
+	-moz-border-radius: 1000px;
+	border-radius: 1000px;
+	display: inline;
+}
+
+.title{
+	color: red;
+}
+
+#small_menu{
+	display: none;
+}
+#large_menu{
+	display: inline;
+}
+
+.menu_buttons{
+	margin-bottom: 1em;
+}
+
+@media (min-width: 1000px) {
+	.menu{
+		height: 100%;
+	}
+	#small_menu{
+		display: inline;
+	}
+	#large_menu{
+		display: none;
+	}
+}
+
+ul{
+	text-align: left;
+}
+
+.project{
+	margin-bottom: 1em;
+}
+
+/* Social Media Button */
+
+.share-buttons{
+	padding-left: 1em;
+	margin-bottom: 3em;
+}
+
+.content {
+
+}
